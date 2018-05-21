@@ -1,7 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
+from django.utils.crypto import get_random_string
 
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        "unique_id": get_random_string(length=8)
+    }
+    return render(request, 'index.html', context)
+
